@@ -2,25 +2,25 @@
 export default {
   data() {
     return {
-      count: 0,
+      counter: 0,
     };
   },
   methods: {
     increment() {
-      this.count++;
+      this.counter++;
     },
     decrement() {
-      this.count--;
+      if (this.counter > 0) this.counter--;
     },
     reset() {
-      this.count = 0;
+      this.counter = 0;
     },
   },
 };
 </script>
 
 <template>
-  <p>You clicked me {{ count }} times.</p>
+  <p>You clicked me {{ counter }} times.</p>
   <button @click="increment">+</button>
   <button @click="decrement">-</button>
   <button @click="reset">reset</button>
