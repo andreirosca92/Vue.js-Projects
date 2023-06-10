@@ -1,7 +1,17 @@
 <template>
-  <h1>My first {{ title }}</h1>
-  <br />
-  <ModalVue :header="header" :text="text" theme="dark" />
+  <h1>{{ title }}</h1>
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <ModalVue theme="dark" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>"Sign up for Blog!"</h1>
+      <p>"Best experience in the world on our blog."</p>
+    </ModalVue>
+  </div>
+  <button @click="toggleModal">open modal</button>
 </template>
 
 <script>
@@ -14,7 +24,13 @@ export default {
       title: "My first Vue App :)",
       header: "Sign up for Blog!",
       text: "Best experience in the world on our blog.",
+      showModal: false,
     };
+  },
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
   },
   components: {
     ModalVue,
