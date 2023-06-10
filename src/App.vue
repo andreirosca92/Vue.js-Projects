@@ -1,24 +1,23 @@
 <template>
   <h1>My first {{ title }}</h1>
   <br />
-  <input type="text" ref="name" />
-  <button @click="handleClick">click me</button>
+  <ModalVue :header="header" :text="text" theme="dark" />
 </template>
 
 <script>
+import ModalVue from "./components/Modal.vue";
+
 export default {
   name: "App",
   data() {
     return {
       title: "My first Vue App :)",
+      header: "Sign up for Blog!",
+      text: "Best experience in the world on our blog.",
     };
   },
-  methods: {
-    handleClick() {
-      console.log(this.$refs.name);
-      this.$refs.name.classList.add("active");
-      this.$refs.name.focus();
-    },
+  components: {
+    ModalVue,
   },
 };
 </script>
