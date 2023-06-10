@@ -1,15 +1,11 @@
 <template>
-  <Navbar />
   <h1>My first {{ title }}</h1>
-  <Counter />
-  <Footer />
+  <br />
+  <input type="text" ref="name" />
+  <button @click="handleClick">click me</button>
 </template>
 
 <script>
-import Counter from "./components/Counter.vue";
-import Footer from "./components/Footer.vue";
-import Navbar from "./components/Navbar.vue";
-
 export default {
   name: "App",
   data() {
@@ -17,10 +13,12 @@ export default {
       title: "My first Vue App :)",
     };
   },
-  components: {
-    Counter,
-    Footer,
-    Navbar,
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name);
+      this.$refs.name.classList.add("active");
+      this.$refs.name.focus();
+    },
   },
 };
 </script>
