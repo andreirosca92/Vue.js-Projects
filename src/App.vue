@@ -1,28 +1,28 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
-    <ModalVue theme="dark" @close="toggleModal">
+  <teleport to=".modals" v-if="showModal">
+    <Modal theme="dark" @close="toggleModal">
       <template v-slot:links>
         <a href="#">sign up now</a>
         <a href="#">more info</a>
       </template>
       <h1>Sign up for Blog!</h1>
       <p>Best experience in the world on our blog.</p>
-    </ModalVue>
-  </div>
+    </Modal>
+  </teleport>
   <div v-if="showModalTwo">
-    <ModalVue @close="toggleModalTwo">
+    <Modal @close="toggleModalTwo">
       <h1>Sign up to the newsletter</h1>
       <p>For updates and promo codes!</p>
-    </ModalVue>
+    </Modal>
   </div>
   <button @click="toggleModal">open modal one</button>
   <button @click="toggleModalTwo">open modal two</button>
 </template>
 
 <script>
-import ModalVue from "./components/Modal.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
   name: "App",
@@ -44,13 +44,14 @@ export default {
     },
   },
   components: {
-    ModalVue,
+    Modal,
   },
 };
 </script>
 
 <style>
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
